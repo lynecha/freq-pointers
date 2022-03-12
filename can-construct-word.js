@@ -1,13 +1,11 @@
+"use strict";
 // add whatever parameters you deem necessary & write doc comment
 
 /** first input is the word and 2nd input are the letters
  *  create two frequency counters then compare
  */
-
-"use strict";
-
 function canConstructWord(word, letters) {
-    if (letters === "") {
+    if (letters === "" || word.length > letters.length) {
         return false;
     }
     let wordCounter = createFrequencyCounter(word);
@@ -24,7 +22,8 @@ function canConstructWord(word, letters) {
 
 function createFrequencyCounter(word) {
     let frequencyCounter = new Map();
-    for (char of word) {
+
+    for (let char of word) {
         if (!frequencyCounter.has(char)) {
             frequencyCounter.set(char, 1);
         }
